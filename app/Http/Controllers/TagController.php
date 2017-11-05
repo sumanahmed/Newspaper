@@ -12,6 +12,12 @@ class TagController extends Controller
     }
 
     public function saveTagInfo(Request $request){
+
+        $this->validate($request, [
+            'tag_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'publication_status' => 'required'
+        ]);
+
         $tag = new Tag();
         $tag->tag_name = $request->tag_name;
         $tag->publication_status = $request->publication_status;
@@ -42,6 +48,12 @@ class TagController extends Controller
     }
 
     public function updateTagInfo(Request $request) {
+
+        $this->validate($request, [
+            'tag_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'publication_status' => 'required'
+        ]);
+
         $tagById = Tag::find($request->tag_id);
         $tagById->tag_name = $request->tag_name;
         $tagById->publication_status = $request->publication_status;

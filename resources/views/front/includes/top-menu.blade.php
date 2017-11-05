@@ -63,8 +63,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="top-menu pull-right">
                 <ul>
-                    <li><a href="{{ url('/user-login') }}">Login</a></li>
-                    <li><a href="{{ url('/user-registration') }}">Registration</a></li>
+                    @if(Session::get('customerId'))
+                    <li><a href="{{ url('/customer-logout') }}">Logout</a></li>
+                    @else
+                    <li><a href="{{ url('/login-registration') }}">Login</a></li>
+                    <li><a href="{{ url('/login-registration') }}">Registration</a></li>
+                    @endif
                 </ul>
             </div>
             <div class="clearfix"></div>

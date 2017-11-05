@@ -19,15 +19,15 @@
                     <div class="form-group">
                         <label for="categoryName" class="col-sm-3 control-label">Category Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="category_name" class="form-control" id="categoryName"
-                                   placeholder="Category Name">
+                            <input type="text" name="category_name" class="form-control" id="categoryName" placeholder="Category Name">
+                            <p class="text-danger">{{ $errors->has('category_name') ? $errors->first('category_name') : ' ' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="categoryDescription" class="col-sm-3 control-label">Category Description</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" name="category_description" rows="10" style="resize: none"
-                                      id="categoryDescription"></textarea>
+                            <textarea class="form-control" name="category_description" rows="10" style="resize: none" id="categoryDescription"></textarea>
+                            <p class="text-danger">{{ $errors->has('category_description') ? $errors->first('category_description') : ' ' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -37,6 +37,7 @@
                                 <option value="1">Published</option>
                                 <option value="0">Unpublished</option>
                             </select>
+                            {{ $errors->has('publication_status') ? $errors->first('publication_status') : ' ' }}
                         </div>
                     </div>
                     <div class="form-group">

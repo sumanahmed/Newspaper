@@ -18,8 +18,14 @@ class SliderController extends Controller
         $sliderImage->move($directory, $imageName);
         $imgUrl = $directory.$imageName;
 
-        $slider = new Slider();
+        $this->validate($request, [
+            'slider_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'slider_title' => 'required|regex:/^[\pL\s\-]+$/u',
+            'slider_image' => 'required',
+            'publication_status' => 'required'
+        ]);
 
+        $slider = new Slider();
         $slider->slider_name  = $request->slider_name;
         $slider->slider_title = $request->slider_title;
         $slider->slider_image = $imgUrl;

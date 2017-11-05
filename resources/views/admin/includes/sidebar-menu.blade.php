@@ -77,13 +77,13 @@
             </li>
             <li><a href="{{ url('/comments') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Comments</a></li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Breaking News<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Users<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{ url('/add-breaking-news') }}">Add Breaking News</a>
+                        <a href="{{ url('/add-user') }}">Add User</a>
                     </li>
                     <li>
-                        <a href="{{ url('/manage-breaking-news') }}">Manage Breaking News</a>
+                        <a href="{{ url('/manage-user') }}">Manage User</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

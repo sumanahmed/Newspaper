@@ -12,6 +12,20 @@ class CategoryController extends Controller
         return view('/admin.category.add-category');
     }
 
+    public function saveCategory(Request $request){
+        $this->validate($request,[
+            'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'category_description' => 'required',
+            'publication_status' => 'required'
+        ]);
+        $category = new Category();
+        $category->category_name = $request->category_name;
+        $category->category_description = $request->category_description;
+        $category->publication_status = $request->publication_status;
+        $category->save();
+        return redirect('/add-category')->with('message', 'Category Info Save Successfully');
+    }
+
     public function manageCategory()
     {
         $allCategories = Category::all();
@@ -24,14 +38,7 @@ class CategoryController extends Controller
         return view('/admin.category.edit-category', ['categoryById' => $categoryById]);
     }
 
-    public function newCategory(Request $request){
-        $category = new Category();
-        $category->category_name = $request->category_name;
-        $category->category_description = $request->category_description;
-        $category->publication_status = $request->publication_status;
-        $category->save();
-        return redirect('/add-category')->with('message', 'Category Info Save Successfully');
-    }
+
 
     public function unpublishedCategory($id){
         $categoryById = Category::find($id);
@@ -54,6 +61,12 @@ class CategoryController extends Controller
 
     public function updateCategory(Request $request)
     {
+        $this->validate($request,[
+            'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'category_description' => 'required',
+            'publication_status' => 'required'
+        ]);
+
         $categoryById = Category::find($request->category_id);
         $categoryById->category_name = $request->category_name;
         $categoryById->category_description = $request->category_description;

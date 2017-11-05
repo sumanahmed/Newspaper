@@ -57,5 +57,10 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'CategoryMiddleware' => \App\Http\Middleware\CategoryMiddleware::class,
+        'PostMiddleware' => \App\Http\Middleware\PostMiddleware::class,
+        'TagMiddleware' => \App\Http\Middleware\TagMiddleware::class,
+        'SliderMiddleware' => \App\Http\Middleware\SliderMiddleware::class,
+        'CommentMiddleware' => \App\Http\Middleware\CommentMiddleware::class,
     ];
 }

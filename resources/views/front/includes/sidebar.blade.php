@@ -64,7 +64,7 @@
                                             <a href="#">
                                                 <img class="media-object" src="{{ asset('https://s.gravatar.com/avatar/5baf8a70838e55f0febe575855fd1e4a?s=80') }}" alt="" />
                                             </a>
-                                            <h5><a href="#">Username</a></h5>
+                                            <h5><a href="#">{{ $comment->name }}</a></h5>
                                         </div>
                                         <div class="media-body response-text-right">
                                             <p>{{ $comment->message }}</p>

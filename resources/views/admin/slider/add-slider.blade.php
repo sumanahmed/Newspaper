@@ -22,20 +22,22 @@
                         <label for="sliderName" class="col-sm-3 control-label">Slider Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="slider_name" class="form-control" id="sliderName" placeholder="Slider Name">
+                            {{ $errors->has('slider_name') ? $errors->first('slider_name') : ' ' }}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="sliderTitle" class="col-sm-3 control-label">Slider Title</label>
                         <div class="col-sm-9">
-                            <input type="text" name="slider_title" class="form-control" id="sliderTitle"
-                                   placeholder="Slider Title">
+                            <input type="text" name="slider_title" class="form-control" id="sliderTitle" placeholder="Slider Title">
+                            {{ $errors->has('slider_title') ? $errors->first('slider_title') : ' ' }}
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Slider Image</label>
                         <div class="col-sm-9">
                             <input type="file" name="slider_image" class="form-control" accept="image/*">
+                            {{ $errors->has('slider_image') ? $errors->first('slider_image') : ' ' }}
                         </div>
                     </div>
 
@@ -46,6 +48,7 @@
                                 <option value="1">Published</option>
                                 <option value="0">Unpublished</option>
                             </select>
+                            {{ $errors->has('publication_status') ? $errors->first('publication_status') : ' ' }}
                         </div>
                     </div>
                     <div class="form-group">

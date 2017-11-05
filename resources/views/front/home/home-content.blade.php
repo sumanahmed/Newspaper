@@ -1,4 +1,4 @@
-@extends('front.master');
+@extends('front.master')
 @section('content')
   <div class="wrap">
         <div class="col-md-8 content-left">

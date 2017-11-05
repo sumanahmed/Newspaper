@@ -14,6 +14,7 @@
                         <div class="col-sm-9">
                             <input type="text" value="{{ $tagById->tag_name }}" name="tag_name" class="form-control"/>
                             <input type="hidden" value="{{ $tagById->id }}" name="tag_id" class="form-control"/>
+                            {{ $errors->has('tag_name') ? $errors->first('tag_name') : ' ' }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -24,6 +25,7 @@
                                 <option value="1">Published</option>
                                 <option value="0">Unpublished</option>
                             </select>
+                            {{ $errors->has('publication_status') ? $errors->first('publication_status') : ' ' }}
                         </div>
                     </div>
                     <div class="form-group">

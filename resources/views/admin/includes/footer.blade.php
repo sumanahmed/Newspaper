@@ -18,7 +18,10 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('/admin/') }}/dist/js/sb-admin-2.js"></script>
-
+<script src="{{ asset('/admin/') }}/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'long_description' );
+</script>
 </body>
 
 </html>

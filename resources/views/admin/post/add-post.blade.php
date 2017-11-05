@@ -19,12 +19,14 @@
                         <label for="postTitle" class="col-sm-3 control-label">Post Title</label>
                         <div class="col-sm-9">
                             <input type="text" name="post_title" class="form-control" id="postTitle" placeholder="Post Title">
+                            <p class="text-danger">{{ $errors->has('post_title') ? $errors->first('post_title') : ' ' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="breakingNews" class="col-sm-3 control-label">Breaking News</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="breaking_news" rows="3" style="resize: none" id="breakingNews"></textarea>
+                            <p class="text-danger">{{ $errors->has('breaking_news') ? $errors->first('breaking_news') : ' ' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -52,12 +54,14 @@
                         <label for="postShortDescription" class="col-sm-3 control-label">Post Short Description</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="short_description" rows="10" style="resize: none" id="postShortDescription"></textarea>
+                            <p class="text-danger">{{ $errors->has('short_description') ? $errors->first('short_description') : ' ' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="postLongDescription" class="col-sm-3 control-label">Post Long Description</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="long_description" rows="10" style="resize: none" id="postLongDescription"></textarea>
+                            <p class="text-danger">{{ $errors->has('long_description') ? $errors->first('long_description') : ' ' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -73,6 +77,7 @@
                                 <option value="1">Published</option>
                                 <option value="0">Unpublished</option>
                             </select>
+                            {{ $errors->has('publication_status') ? $errors->first('publication_status') : ' ' }}
                         </div>
                     </div>
                     <div class="form-group">

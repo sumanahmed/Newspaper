@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\Comment;
 use App\Post;
 use App\Category;
 use App\Slider;
@@ -55,9 +56,13 @@ class NewspaperController extends Controller
     public function postDetails($id){
         $postById = Post::find($id);
         $relatedPosts = Post::where('category_id', $postById->category_id)->take(4)->get();
-
+        $comments = Comment::where('approval_status', 1)
+                    ->where('post_id', '=', $postById->id)
+                    ->orderBy('id', 'desc')
+                    ->get();
         return view('front.post.post-details', [
             'postById' => $postById,
+            'comments' => $comments,
             'relatedPosts' => $relatedPosts
         ]);
     }

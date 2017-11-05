@@ -26,6 +26,16 @@ class PostController extends Controller
         $postImage->move($directory, $imageName);
         $imgUrl = $directory.$imageName;
 
+        $this->validate($request, [
+            'post_title' => 'required|regex:/^[\pL\s\-]+$/u',
+            'breaking_news' => 'required|regex:/^[\pL\s\-]+$/u',
+            'category_id' => 'required',
+            'tag_id' => 'required',
+            'short_description' => 'required',
+            'long_description' => 'required',
+            'publication_status' => 'required'
+        ]);
+
         $post = new Post();
         $post->post_title = $request->post_title;
         $post->breaking_news = $request->breaking_news;

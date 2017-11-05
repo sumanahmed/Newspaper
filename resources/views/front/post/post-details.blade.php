@@ -86,21 +86,46 @@
                             @endforeach
                         </div>
                         <!--//related-posts-->
-
-                        <div class="coment-form">
-                            <h4>To Write Your Comment <a href="{{ url('/user-login') }}">Login</a> <span>or</span> <a href="{{ url('/user-registration') }}">Registration</a></h4>
-
+                        <div class="response">
+                            <h4>Responses</h4>
+                            @foreach($comments as $comment)
+                            <div class="media response-info">
+                                <div class="media-left response-text-left">
+                                    <a href="#">
+                                        <img class="media-object" src="images/c1.jpg" alt=""/>
+                                    </a>
+                                    <h5><a href="#">{{ $comment->full_name }}</a></h5>
+                                </div>
+                                <div class="media-body response-text-right">
+                                    <p>{{ $comment->message }}</p>
+                                    <ul>
+                                        <li>{{ $comment->created_at }}</li>
+                                        <li><a href="#commentForm">Reply</a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            @endforeach
                         </div>
                         <div class="coment-form">
+                            <h4>To Write Your Comment <a href="{{ url('/login-registration') }}">Login</a> <span>or</span> <a href="{{ url('/login-registration') }}">Registration</a></h4>
+                        </div>
+                        @if(Session::get('customerId'))
+                        <div class="coment-form">
                             <h4>Leave your comment</h4>
-                            <form action="{{ url('/new-comment') }}" method="POST">
+                            <form action="{{ url('/new-comment') }}" method="POST" id="commentForm">
                                 {{ csrf_field() }}
                                 <input type="text" placeholder="Name " name="name" required="">
+                                {{ $errors->has('name') ? $errors->first('name') : ' ' }}
+                                <input type="hidden" placeholder="Name " name="post_id" value="{{ $postById->id }}">
                                 <input type="email" placeholder="Email (will not be published)*" name="email" required="">
+                                {{ $errors->has('email') ? $errors->first('email') : ' ' }}
                                 <textarea name="message" placeholder="Your Comment..." required=""></textarea>
+                                {{ $errors->has('message') ? $errors->first('message') : ' ' }}
                                 <input type="submit" name="submit" value="Submit Comment" >
                             </form>
                         </div>
+                        @endif
 
 
                         <div class="clearfix"></div>

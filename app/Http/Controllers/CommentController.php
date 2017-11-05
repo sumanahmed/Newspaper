@@ -8,7 +8,15 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     public function saveComment(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'email' => 'required|email|unique:comments,email',
+            'message' => 'required'
+        ]);
+
         $comment = new Comment();
+        $comment->post_id = $request->post_id;
         $comment->name = $request->name;
         $comment->email = $request->email;
         $comment->message = $request->message;
@@ -46,7 +54,7 @@ class CommentController extends Controller
     public function deleteComment($id){
         $commentById = Comment::find($id);
         $commentById->delete();
-        
+        return redirect('comments')->with('message','Comment Deleted Successfully');
     }
 
 
