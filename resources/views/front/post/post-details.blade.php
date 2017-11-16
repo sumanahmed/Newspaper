@@ -92,7 +92,10 @@
                             <div class="media response-info">
                                 <div class="media-left response-text-left">
                                     <a href="#">
-                                        <img class="media-object" src="images/c1.jpg" alt=""/>
+                                        <?php
+                                        $grav_url = "https://www.gravatar.com/avatar/".md5(strtolower(trim($comment->email)));
+                                        ?>
+                                        <img style="width:80px; height: 80px;" class="media-object" src="<?php echo $grav_url;?>" alt=""/>
                                     </a>
                                     <h5><a href="#">{{ $comment->full_name }}</a></h5>
                                 </div>

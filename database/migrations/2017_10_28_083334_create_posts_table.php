@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->text('short_description');
             $table->text('long_description');
             $table->text('post_image');
+            $table->integer('views');
             $table->tinyInteger('publication_status');
             $table->timestamps();
         });

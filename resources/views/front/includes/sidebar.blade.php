@@ -9,17 +9,18 @@
                         <div class="scrollbar" id="style-2">
                             <div class="force-overflow">
                                 <div class="popular-post-grids">
-
+                                    @foreach($posts as $post)
                                     <div class="popular-post-grid">
                                         <div class="post-img">
-                                            <a href="single.html"><img src="{{ asset('/front/') }}/images/bus2.jpg" alt="" /></a>
+                                            <a href="{{ url('/post-details/'.$post->id) }}"><img src="{{ asset($post->post_image) }}" alt="" /></a>
                                         </div>
                                         <div class="post-text">
-                                            <a class="pp-title" href="single.html"> The section of the mass media industry</a>
-                                            <p>On Feb 25 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+                                            <a class="pp-title" href="{{ url('/post-details/'.$post->id) }}"> {{ $post->post_title }}</a>
+                                            <p>{{ $post->created_at->diffForHumans() }} <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span> {{ $post->views }} </a></p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
+                                    @endforeach
 
                                 </div>
                             </div>
@@ -40,7 +41,7 @@
                                         </div>
                                         <div class="post-text">
                                             <a class="pp-title" href="{{ url('/post-details/'.$post->id) }}"> The section of the mass media industry</a>
-                                            <p>On Feb 25 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+                                            <p>{{ $post->created_at->diffForHumans() }} <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -62,14 +63,17 @@
                                     <div class="media response-info">
                                         <div class="media-left response-text-left">
                                             <a href="#">
-                                                <img class="media-object" src="{{ asset('https://s.gravatar.com/avatar/5baf8a70838e55f0febe575855fd1e4a?s=80') }}" alt="" />
+                                                <?php
+                                                $grav_url = "https://www.gravatar.com/avatar/".md5(strtolower(trim($comment->email)));
+                                                ?>
+                                                <img style="width:100px" class="media-object" src="<?php echo $grav_url;?>" alt=""/>
                                             </a>
                                             <h5><a href="#">{{ $comment->name }}</a></h5>
                                         </div>
                                         <div class="media-body response-text-right">
                                             <p>{{ $comment->message }}</p>
                                             <ul>
-                                                <li>{{ $comment->created_at }}</li>
+                                                <li>{{ $comment->created_at->diffForHumans() }}</li>
                                                 <li><a href="">Reply</a></li>
                                             </ul>
                                         </div>

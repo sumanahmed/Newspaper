@@ -14,7 +14,7 @@
                     </div>
                     <div class="article-right">
                         <div class="article-title">
-                            <p>{{ $post->created_at }} <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>104 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>52</a></p>
+                            <p>{{ $post->created_at }} <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>{{ count($comment) }}</a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>{{ $post->views }} </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>52</a></p>
                             <a class="title" href="{{ url('/post-details/'.$post->id) }}"> {{ $post->post_title }}.</a>
                         </div>
                         <div class="article-text">

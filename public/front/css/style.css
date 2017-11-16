@@ -666,7 +666,7 @@ a.span_link:hover {
 .life-style-left-grid {
 	float:left;
 	width:48%;
-	margin-right:4%;
+	margin-left: 2%;
 }
 .life-style-left-grid img,.life-style-right-grid img {
 	width:100%;
@@ -678,6 +678,7 @@ a.span_link:hover {
 }
 .life-style-grids {
     margin-top: 2em;
+	margin-left: -2%;
 }
 /*-- technology-page --*/
 .tech-main {

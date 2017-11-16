@@ -43,6 +43,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('front.includes.sidebar', function ($view){
             $view->with('comments', Comment::where('approval_status', 1)->orderBy('id', 'desc')->take(4)->get() );
         });
+        //show popular posts in sidebar
+        View::composer('front.includes.sidebar', function ($view){
+            $view->with('posts', Post::where('publication_status', 1)->orderBy('views', 'desc')->take(4)->get() );
+        });
 
 
 

@@ -14,8 +14,16 @@ Route::post('/send-email', 'NewspaperController@sendEmail');
 
 
 //user
-//Route::get();
-
+Route::group(['middleware' => 'UserMiddleware'], function (){
+    Route::get('/add-user','UserController@addUser');
+    Route::post('/new-user','UserController@saveUser');
+    Route::get('/manage-user','UserController@manageUser');
+    Route::get('/edit-user/{id}','UserController@editUser');
+    Route::post('/update-user','UserController@updateUser');
+    Route::get('/delete-user/{id}','UserController@deleteUser');
+    Route::get('/change-password/{id}','UserController@changePassword');
+    Route::post('/update-password','UserController@updatePassword');
+});
 
 //Front End Comment
 Route::post('/new-comment', 'CommentController@saveComment');
@@ -36,8 +44,7 @@ Route::get('/customer-logout','CustomerController@customerLogout');
 
 
 /* Back End */
-
-
+//Pages
 Route::get('/edit-about', 'PagesController@addAboutContent');
 Route::post('/update-pages', 'PagesController@updateAboutContent');
 

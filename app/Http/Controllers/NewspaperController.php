@@ -21,6 +21,10 @@ class NewspaperController extends Controller
                 ->orderBy('id','desc')
                 ->get();
 
+        $comment = DB::table('posts')
+                ->join('comments', 'posts.id', '=', 'comments.post_id')
+                ->get();
+
         $sliders= Slider::where('publication_status', '1')
             ->orderBy('id', 'desc')
             ->take(3)
@@ -49,12 +53,20 @@ class NewspaperController extends Controller
             'sliders'=>$sliders,
             'lifeStylePosts'=>$lifeStylePosts,
             'businessPosts'=>$businessPosts,
-            'technologyPosts'=>$technologyPosts
+            'technologyPosts'=>$technologyPosts,
+            'comment'=>$comment
         ]);
     }
 
     public function postDetails($id){
+
+        $data = array();
         $postById = Post::find($id);
+        $data['views']= $postById->views+1;
+        DB::table('posts')
+            ->where('id',$id)
+            ->update($data);
+
         $relatedPosts = Post::where('category_id', $postById->category_id)->take(4)->get();
         $comments = Comment::where('approval_status', 1)
                     ->where('post_id', '=', $postById->id)

@@ -56,9 +56,20 @@
         <ul class="nav navbar-top-links navbar-right">
 
             <!-- /.dropdown -->
+            <li> You are <strong>
+                    @if(Auth::user()->role == 0)
+                        Super Admin
+                    @elseif(Auth::user()->role == 1)
+                        Admin
+                    @elseif(Auth::user()->role == 2)
+                        Reporter
+                    @else
+                        Subscriber
+                    @endif
+                </strong></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> {{--{{ Auth::user()->name }}--}} <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>

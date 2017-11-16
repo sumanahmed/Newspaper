@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'TagMiddleware' => \App\Http\Middleware\TagMiddleware::class,
         'SliderMiddleware' => \App\Http\Middleware\SliderMiddleware::class,
         'CommentMiddleware' => \App\Http\Middleware\CommentMiddleware::class,
+        'UserMiddleware' => \App\Http\Middleware\UserMiddleware::class,
     ];
 }
