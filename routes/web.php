@@ -11,6 +11,8 @@ Route::get('/post-category/{id}', 'NewspaperController@categoryPost');
 Route::get('/about-content', 'NewspaperController@aboutContent');
 Route::get('/contact-content', 'NewspaperController@contactContent');
 Route::post('/send-email', 'NewspaperController@sendEmail');
+Route::post('/search', 'NewspaperController@searchEverything');
+
 
 
 //user

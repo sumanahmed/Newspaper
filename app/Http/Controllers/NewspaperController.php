@@ -12,6 +12,7 @@ use DB;
 use App\Email;
 use Mail;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Input;
 
 class NewspaperController extends Controller
 {
@@ -101,6 +102,28 @@ class NewspaperController extends Controller
         return view('front.contact.contact-content', ['pageContents'=>$pageContents]);
 
     }
+
+
+
+    public function searchEverything(Request $request){
+        if ($request->search == ""){
+            $datas = Post::paginate(3);
+            return view('front.post.search',compact('datas'));
+        }else{
+            $datas = Post::where('post_title', 'LIKE', '%'.$request->search.'%')->paginate(3);
+            $datas->appends($request->only('search'));
+            return view('front.post.search', compact('datas'));
+        }
+
+    }
+
+
+
+
+
+
+
+
 
     public function sendEmail(Request $request){
         $email = new Email();

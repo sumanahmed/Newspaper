@@ -24,9 +24,10 @@
                         <!-- start search-->
                         <div class="search-box">
                             <div id="sb-search" class="sb-search">
-                                <form>
-                                    <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-                                    <input class="sb-search-submit" type="submit" value="">
+                                <form action="{{ url('/search') }}" method="post" role="search" accept-charset="UTF-8">
+                                    {{ csrf_field() }}
+                                    <input type="text" name="search" placeholder="Enter your search ..."  class="sb-search-input" id="search">
+                                    <input type="submit" class="sb-search-submit"  value="">
                                     <span class="sb-icon-search"> </span>
                                 </form>
                             </div>
